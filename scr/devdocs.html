@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevDocs – статьи</title>
+    <link rel="shortcut icon" href="image/speedwarecode_logo.svg"/>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="devdocs.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="index.html" style="cursor:pointer;">
+            <div class="logo-container">
+                <svg class="logo">
+                    <image href="image/speedware_logo.svg" width="55" height="40" />
+                </svg>
+            </div>
+            <h1 class="logo-text">speedware</h1>
+            <span class="brand-page">/devdocs</span>
+        </a>
+        <div class="menu-wrap">
+            <button class="hamburger-btn" id="menuBtn" aria-label="Открыть меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="glass-menu" id="glassMenu">
+                <a class="glass-menu-item" href="devdocs.html">Devdocs</a>
+                <a class="glass-menu-item" href="https://download.nextgate.uni-port.ru/" target="_blank" rel="noopener">Nextgate VPN</a>
+                <a class="glass-menu-item" href="https://uptime.speedware.tech/status/speedware" target="_blank" rel="noopener">Мониторинг</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="app" class="devdocs-page">
+
+        <div v-if="view === 'list'">
+            <div class="devdocs-title-row">
+                <h1>Статьи</h1>
+                <a class="home-btn" href="index.html">← На главную</a>
+            </div>
+
+            <div v-if="loading" class="loading">
+                <div class="spinner"></div>
+                <span>Загрузка…</span>
+            </div>
+
+            <div v-if="error" class="error">
+                <h4>⚠️ {{ error.title }}</h4>
+                <p>{{ error.message }}</p>
+            </div>
+
+            <div v-if="!loading && !error && articles.length" class="articles-grid">
+                <div
+                    v-for="article in articles"
+                    :key="article.id"
+                    class="article-card"
+                    @click="openArticle(article)"
+                >
+                    <div class="card-cover">
+                        <img v-if="article.cover_type" :src="coverSrc(article)" :alt="article.title" />
+                        <div v-else class="cover-fallback">📄</div>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{ article.title }}</h4>
+                        <span class="card-date">{{ formatDate(article.date) }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="!loading && !error && !articles.length" class="empty-state">
+                Статей не найдено
+            </div>
+        </div>
+
+        <div v-if="view === 'article'">
+            <button class="back-link" @click="closeArticle">← К списку статей</button>
+
+            <div v-if="loadingContent" class="loading">
+                <div class="spinner"></div>
+                <span>Загрузка…</span>
+            </div>
+
+            <div v-if="contentError" class="error">
+                <h4>⚠️ {{ contentError.title }}</h4>
+                <p>{{ contentError.message }}</p>
+            </div>
+
+            <template v-if="currentArticle && !loadingContent && !contentError">
+                <div class="article-view-header">
+                    <div class="article-view-cover" v-if="currentArticle.cover_type">
+                        <img :src="coverSrc(currentArticle)" :alt="currentArticle.title" />
+                    </div>
+                    <div class="article-view-tags" v-if="currentArticle.tags.length">
+                        <span class="article-view-tag" v-for="tag in currentArticle.tags" :key="tag">{{ tag }}</span>
+                    </div>
+                    <h2>{{ currentArticle.title }}</h2>
+                    <div class="article-view-meta">{{ formatDate(currentArticle.date) }}</div>
+                </div>
+
+                <main class="devdocs-content">
+                    <div class="markdown-body" v-html="renderedContent"></div>
+                </main>
+            </template>
+        </div>
+    </div>
+
+    <script src="devdocs.js"></script>
+</body>
+</html>
