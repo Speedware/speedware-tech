@@ -63,20 +63,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
 })();
 
 (function () {
-  const timerEl = document.getElementById('mobilityTimer');
-  if (!timerEl) return;
-
-  let seconds = 2 * 3600 + 14 * 60 + 36;
-  setInterval(() => {
-    seconds++;
-    const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
-    const m = String(Math.floor(seconds / 60) % 60).padStart(2, '0');
-    const s = String(seconds % 60).padStart(2, '0');
-    timerEl.textContent = `${h}:${m}:${s}`;
-  }, 1000);
-})();
-
-(function () {
   const container = document.getElementById('finmanDigits');
   if (!container) return;
 

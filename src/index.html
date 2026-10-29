@@ -43,7 +43,6 @@
 
   <section class="hero" id="home">
     <div class="hero-content">
-      <span class="eyebrow">speedware.tech / open source</span>
       <h1>Мы создаём <span class="changing-word" id="changing-word">сервисы</span><br>— упрощая сложное.</h1>
       <p>Ведь цифровой мир должен быть удобнее и человечнее.</p>
       <div class="hero-actions">
@@ -52,13 +51,10 @@
       </div>
     </div>
 
-    <div class="hero-media">
-      <!-- Заглушка под видео. Чтобы добавить видео, замените блок .video-placeholder на:
-           <video src="video/hero.mp4" autoplay muted loop playsinline></video> -->
-      <div class="video-placeholder">
-        <span class="video-placeholder-label">video · 16:9</span>
-      </div>
-    </div>
+    <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+      <!-- <source src="video/hero.mp4" type="video/mp4"> -->
+    </video>
+    <div class="hero-veil"></div>
   </section>
 
   <div class="marquee-container">
@@ -169,6 +165,7 @@
 
       <article class="project">
         <div class="project-preview">
+          <div class="tv">
           <div class="tv-frame">
             <div class="tv-screen">
               <div class="pairing-box">
@@ -185,6 +182,8 @@
                 <p class="pairing-expiry">This code expires in <span id="anyscreenTimer">09:56</span></p>
               </div>
             </div>
+          </div>
+            <div class="tv-stand"></div>
           </div>
         </div>
         <div class="project-body">
@@ -204,32 +203,58 @@
         <div class="project-preview">
           <div class="tandem">
             <div class="tandem-monitor">
-              <div class="tandem-screen">
-                <div class="tandem-window">
-                  <div class="tandem-titlebar"><i></i><i></i><i></i></div>
-                  <div class="tandem-content">
-                    <span class="tandem-line"></span>
-                    <span class="tandem-line"></span>
-                    <span class="tandem-line tandem-line-short"></span>
-                    <span class="tandem-bar"><span></span></span>
+              <div class="tandem-screen tandem-desktop">
+                <div class="win win-1c">
+                  <div class="win-bar"><b>1С:Предприятие</b></div>
+                  <div class="win-body">
+                    <span class="row"></span><span class="row"></span><span class="row"></span><span class="row"></span><span class="row"></span>
                   </div>
                 </div>
+                <div class="win win-word">
+                  <div class="win-bar"><b>Word</b></div>
+                  <div class="win-body"><div class="win-page"><span></span><span></span><span></span><span></span></div></div>
+                </div>
+                <div class="win win-chrome win-captured">
+                <div class="chrome">
+                  <div class="chrome-tabs">
+                    <span class="chrome-tab chrome-tab-active"><i></i><b></b></span>
+                    <span class="chrome-tab"><i></i><b></b></span>
+                    <span class="chrome-plus"></span>
+                  </div>
+                  <div class="chrome-toolbar">
+                    <span class="chrome-omni"><i></i></span>
+                    <span class="chrome-avatar"></span>
+                  </div>
+                  <div class="chrome-view"><div class="chrome-page">
+                    <span class="cp-head"></span>
+                    <span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span>
+                  </div></div>
+                </div>
+                </div>
+                <div class="taskbar">
+                  <span class="tb-start"></span><span class="tb-chrome"></span><span class="tb-word"></span><span class="tb-1c"></span>
+                </div>
               </div>
-              <span class="tandem-label">Монитор 1</span>
             </div>
             <div class="tandem-link"><span></span></div>
             <div class="tandem-monitor">
-              <div class="tandem-screen">
-                <div class="tandem-window tandem-window-full">
-                  <div class="tandem-content">
-                    <span class="tandem-line"></span>
-                    <span class="tandem-line"></span>
-                    <span class="tandem-line tandem-line-short"></span>
-                    <span class="tandem-bar"><span></span></span>
+              <div class="tandem-screen tandem-mirror">
+                <div class="chrome">
+                  <div class="chrome-tabs">
+                    <span class="chrome-tab chrome-tab-active"><i></i><b></b></span>
+                    <span class="chrome-tab"><i></i><b></b></span>
+                    <span class="chrome-plus"></span>
                   </div>
+                  <div class="chrome-toolbar">
+                    <span class="chrome-omni"><i></i></span>
+                    <span class="chrome-avatar"></span>
+                  </div>
+                  <div class="chrome-view"><div class="chrome-page">
+                    <span class="cp-head"></span>
+                    <span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span><span class="cp-card"></span>
+                  </div></div>
                 </div>
               </div>
-              <span class="tandem-label">Монитор 2</span>
             </div>
           </div>
         </div>
@@ -247,23 +272,13 @@
       </article>
 
       <article class="project">
-        <div class="project-preview">
-          <div class="mob-phone">
-            <div class="mob-screen">
-              <div class="mob-header">
-                <img src="image/projects/mobility.svg" alt="" class="mob-header-logo" />
-                <span class="mob-header-title">Мобилити</span>
-              </div>
-              <div class="mob-rental">
-                <span class="mob-rental-label">Активная аренда · Flex</span>
-                <span class="mob-rental-bike">Байк №07</span>
-                <span class="mob-rental-timer" id="mobilityTimer">02:14:36</span>
-              </div>
-              <div class="mob-list">
-                <div class="mob-row"><span>Байк №03</span><span class="mob-status mob-status-free">Свободен</span></div>
-                <div class="mob-row"><span>Байк №11</span><span class="mob-status mob-status-repair">Ремонт</span></div>
-                <div class="mob-row"><span>Байк №14</span><span class="mob-status mob-status-free">Свободен</span></div>
-              </div>
+        <div class="project-preview project-preview-stage">
+          <div class="stage">
+            <div class="stage-screen">
+              <img src="image/projects/previews/mobility-admin.webp" alt="Панель владельца Мобилити" loading="lazy" />
+            </div>
+            <div class="stage-phone">
+              <img src="image/projects/previews/mobility-app.webp" alt="Экран «Байки» в приложении курьера" loading="lazy" />
             </div>
           </div>
         </div>
@@ -328,9 +343,14 @@
       </article>
 
       <article class="project">
-        <div class="project-preview">
-          <div class="phone-frame">
-            <img src="image/IMG_0502.PNG" alt="Расписание Calsync в календаре" class="phone-screenshot" />
+        <div class="project-preview project-preview-stage">
+          <div class="stage">
+            <div class="stage-screen">
+              <img src="image/projects/previews/calsync-site.webp" alt="Сайт Calsync: поиск группы" loading="lazy" />
+            </div>
+            <div class="stage-phone">
+              <img src="image/projects/previews/calsync-phone.webp" alt="Пара в календаре iPhone" loading="lazy" />
+            </div>
           </div>
         </div>
         <div class="project-body">
@@ -394,7 +414,6 @@
           <a href="https://github.com/speedware" target="_blank" rel="noopener">GitHub</a>
           <a href="https://set.ki/96XeJXm" target="_blank" rel="noopener">Сетка</a>
           <a href="mailto:hub@speedware.tech">Почта</a>
-          <a href="https://uptime.speedware.tech/status/speedware" target="_blank" rel="noopener">Мониторинг</a>
         </nav>
       </div>
       <a class="footer-qr-card" href="https://t.me/antonio_kartonioo" target="_blank" rel="noopener">
@@ -404,8 +423,6 @@
     </div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> Speedware</span>
-      <span class="footer-dot">/</span>
-      <span>Открытый исходный код</span>
     </div>
   </footer>
 
