@@ -532,7 +532,7 @@ h1, h2, h3, p { margin: 0; }
   background: #18181b;
 }
 
-.tandem-desktop { background: linear-gradient(135deg, #dce7fb, #b9cdf5 55%, #a7bff0); }
+.tandem-desktop { background: linear-gradient(135deg, #dce7fb, #b9cdf5 55%, #a7bff0); container-type: inline-size; }
 
 .win {
   position: absolute;
@@ -544,13 +544,13 @@ h1, h2, h3, p { margin: 0; }
   flex-direction: column;
 }
 .win-bar {
-  height: 9px;
+  height: 4.3cqw;
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  padding: 0 3px;
+  padding: 0 1.4cqw;
 }
-.win-bar b { font-size: 4.5px; font-weight: 600; white-space: nowrap; }
+.win-bar b { font-size: 2.18cqw; font-weight: 600; white-space: nowrap; }
 .win-body { flex: 1; position: relative; overflow: hidden; }
 
 .win-1c { left: 5%; top: 7%; width: 52%; height: 58%; }
@@ -566,7 +566,9 @@ h1, h2, h3, p { margin: 0; }
 .win-page span { height: 2px; background: #c9d1dc; border-radius: 1px; }
 .win-page span:last-child { width: 60%; }
 
-.win-chrome { left: 20%; top: 22%; width: 56%; height: 62%; container-type: inline-size; }
+.win-chrome { left: 20%; top: 22%; width: 56%; height: 62%; }
+.win-chrome .win-bar { background: #dee1e6; color: #3c4043; }
+.win-chrome .win-body { container-type: inline-size; }
 .win-captured { outline: 1.5px solid #4170f2; outline-offset: 1px; }
 .tandem-mirror { container-type: inline-size; background: #dee1e6; }
 
@@ -579,52 +581,6 @@ h1, h2, h3, p { margin: 0; }
   font-size: 1cqw;
   background: #fff;
 }
-.chrome-tabs {
-  height: 7em;
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-end;
-  gap: 1em;
-  padding: 0 2em;
-  background: #dee1e6;
-}
-.chrome-tab {
-  width: 24em;
-  height: 5.4em;
-  display: flex;
-  align-items: center;
-  gap: 1.4em;
-  padding: 0 2em;
-  border-radius: 1.6em 1.6em 0 0;
-}
-.chrome-tab i { width: 2.6em; height: 2.6em; border-radius: 50%; background: #9aa0a6; flex-shrink: 0; }
-.chrome-tab b { height: 1.2em; flex: 1; border-radius: 1em; background: #9aa0a6; opacity: 0.5; }
-.chrome-tab-active { background: #fff; }
-.chrome-tab-active i { background: #4170f2; }
-.chrome-tab-active b {
-  height: auto;
-  background: none;
-  opacity: 1;
-  font-size: 2.6em;
-  font-weight: 500;
-  line-height: 1;
-  color: #3c4043;
-  white-space: nowrap;
-}
-.chrome-plus { width: 2.4em; height: 2.4em; margin: 0 0 1.5em 1em; border-radius: 50%; background: #c4c7cc; }
-.chrome-toolbar {
-  height: 7em;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 2em;
-  padding: 0 2em;
-  border-bottom: 0.25em solid #e3e3e3;
-}
-.chrome-omni { flex: 1; height: 4.6em; border-radius: 3em; background: #f1f3f4; display: flex; align-items: center; padding: 0 2.4em; }
-.chrome-omni i { width: 30%; height: 1.2em; border-radius: 1em; background: #9aa0a6; }
-.chrome-avatar { width: 3.4em; height: 3.4em; border-radius: 50%; background: #c4deff; }
-
 .chrome-view { position: relative; flex: 1; overflow: hidden; background: #f6f8fc; }
 .chrome-page {
   display: grid;
