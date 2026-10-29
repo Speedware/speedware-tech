@@ -24,7 +24,8 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeMenu();
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 (function () {
   const boxes = Array.from(document.querySelectorAll('#anyscreenCodes .code-digit'));
@@ -146,10 +147,11 @@ function updateWord() {
     }, 10);
   }, 300);
 }
-setInterval(updateWord, 4000);
+if (wordEl) setInterval(updateWord, 4000);
 
 document.addEventListener('DOMContentLoaded', function() {
   const marqueeContent = document.querySelector('.marquee-content');
   const track = document.querySelector('.marquee-track');
+  if (!marqueeContent || !track) return;
   track.appendChild(marqueeContent.cloneNode(true));
 });

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="robots" content="noindex"/>
+  <link rel="shortcut icon" href="/image/speedwarecode_logo.svg"/>
+  <link rel="preload" href="/fonts/nasalization-rg.otf" as="font" type="font/otf" crossorigin/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <title>Страница не найдена · Speedware</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="brand" href="/" aria-label="Speedware">
+      <svg class="logo" viewBox="0 0 981 396" aria-hidden="true">
+        <polygon points="145.61 234 73.61 378 217.61 378 145.61 234"/>
+        <polygon points="324 18 396 162 468 18 324 18"/>
+        <polygon points="540 18 432 234 504 378 684 18 540 18"/>
+        <polygon points="756 18 648 234 720 378 900 18 756 18"/>
+        <path d="M288,378l-108-216L252,18l108,216c5.57,10.05,8.04,19.25,9,27,5.17,41.77-27.9,86.61-81,117Z"/>
+        <path d="M252,18l108,216-72,144-108-216c-5.57-10.05-8.04-19.25-9-27-5.17-41.77,27.9-86.61,81-117Z"/>
+      </svg>
+      <span class="logo-text">speedware</span>
+    </a>
+    <div class="menu-wrap">
+      <button class="hamburger-btn" id="menuBtn" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="menu" id="menu">
+        <a class="menu-item" href="/#projects">Проекты</a>
+        <a class="menu-item" href="https://uptime.speedware.tech/status/speedware" target="_blank" rel="noopener">Мониторинг <span class="menu-arrow">↗</span></a>
+        <a class="menu-item" href="https://github.com/speedware" target="_blank" rel="noopener">GitHub <span class="menu-arrow">↗</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="hero notfound">
+    <div class="hero-content">
+      <span class="eyebrow">Ошибка 404</span>
+      <div class="nf-code" aria-hidden="true">4<span class="accent">0</span>4</div>
+      <h1>Это не мы сломали.</h1>
+      <p>Страница переехала или её никогда не было. Проверьте адрес или вернитесь на главную.</p>
+      <code class="nf-request">GET <span id="nfPath">/</span> → 404 Not Found</code>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/">На главную</a>
+        <a class="btn" href="/#projects">Проекты</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer site-footer-compact">
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Speedware</span>
+    </div>
+  </footer>
+
+<script src="/script.js"></script>
+<script>
+  document.getElementById('nfPath').textContent = decodeURI(location.pathname);
+</script>
+</body>
+</html>
