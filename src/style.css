@@ -166,11 +166,13 @@ h1, h2, h3, p { margin: 0; }
 .hero-content { display: flex; flex-direction: column; gap: 20px; }
 
 .hero h1 {
-  font-size: clamp(36px, 5vw, 60px);
+  /* "Мы создаём автоматизации" ≈ 14em wide: keep each line on one row */
+  font-size: min(60px, calc((100vw - 2 * var(--gutter)) / 14));
   line-height: 1.08;
   letter-spacing: -0.03em;
   font-weight: 700;
 }
+.hero-line { display: block; white-space: nowrap; }
 .hero h1 .changing-word {
   color: var(--accent);
   display: inline-block;
@@ -196,7 +198,7 @@ h1, h2, h3, p { margin: 0; }
 .btn-primary { background: var(--text); border-color: var(--text); color: #fff; }
 .btn-primary:hover { background: #2a2a30; }
 
-.hero-content { max-width: 720px; }
+.hero-content { max-width: 880px; }
 
 .hero-video {
   position: absolute;
@@ -599,7 +601,16 @@ h1, h2, h3, p { margin: 0; }
 .chrome-tab b { height: 1.2em; flex: 1; border-radius: 1em; background: #9aa0a6; opacity: 0.5; }
 .chrome-tab-active { background: #fff; }
 .chrome-tab-active i { background: #4170f2; }
-.chrome-tab-active b { background: #3c4043; opacity: 0.6; }
+.chrome-tab-active b {
+  height: auto;
+  background: none;
+  opacity: 1;
+  font-size: 2.6em;
+  font-weight: 500;
+  line-height: 1;
+  color: #3c4043;
+  white-space: nowrap;
+}
 .chrome-plus { width: 2.4em; height: 2.4em; margin: 0 0 1.5em 1em; border-radius: 50%; background: #c4c7cc; }
 .chrome-toolbar {
   height: 7em;
@@ -658,20 +669,6 @@ h1, h2, h3, p { margin: 0; }
   position: relative;
   flex-shrink: 0;
 }
-.tandem-link span {
-  position: absolute;
-  top: -2px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4170f2;
-  animation: tandem-flow 1.2s linear infinite;
-}
-@keyframes tandem-flow {
-  from { left: 0; opacity: 0; }
-  20%, 80% { opacity: 1; }
-  to { left: calc(100% - 6px); opacity: 0; }
-}
 
 /* Finman */
 
@@ -727,39 +724,47 @@ h1, h2, h3, p { margin: 0; }
 .finman-stat-expense .finman-stat-value { color: #c24545; }
 
 .finman-chart { width: 100%; height: 80px; display: block; overflow: visible; }
-.finman-dot {
-  offset-path: path("M0,80 L30,65 L60,72 L90,50 L120,55 L150,30 L180,38 L210,15 L240,20");
-  animation: finman-travel 4s linear infinite;
-}
-@keyframes finman-travel {
-  0% { offset-distance: 0%; opacity: 0; }
-  6%, 94% { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
-}
 
 /* NextGate VPN */
 
-.vpn { width: 220px; height: 220px; max-width: 100%; }
-.vpn-globe { width: 100%; height: 100%; overflow: visible; }
+.ng-panel {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 36px rgba(17, 17, 20, 0.08);
+}
+.ng-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 600;
+}
 
-.vpn-ring { animation: vpn-ring-rotate 10s linear infinite, vpn-ring-morph 9s ease-in-out infinite; }
-@keyframes vpn-ring-rotate {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -616; }
+.ng-list { list-style: none; margin: 0; padding: 0; }
+.ng-row {
+  display: grid;
+  grid-template-columns: 22px 1fr 52px;
+  align-items: center;
+  gap: 8px;
+  height: 20px;
+  padding: 0 6px;
+  margin: 0 -6px;
+  border-radius: 5px;
+  font-size: 11px;
+  transition: background-color .4s ease;
 }
-@keyframes vpn-ring-morph {
-  0%, 8% { stroke-dasharray: 2 12; }
-  42%, 58% { stroke-dasharray: 616 0; }
-  92%, 100% { stroke-dasharray: 2 12; }
-}
-
-.vpn-node { fill: var(--accent); stroke: #fff; stroke-width: 2; animation: vpn-pulse 3s ease-in-out infinite; }
-.vpn-node:nth-of-type(2) { animation-delay: 1s; }
-.vpn-node:nth-of-type(3) { animation-delay: 2s; }
-@keyframes vpn-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.25; }
-}
+.ng-code { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.ng-ping { font-family: var(--mono); font-size: 10px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.ng-ping b { font-weight: 500; color: var(--text); }
+.ng-row.best { background: var(--bg); }
+.ng-row.best .ng-ping b { color: #16a34a; }
 
 /* Footer */
 

@@ -43,7 +43,7 @@
 
   <section class="hero" id="home">
     <div class="hero-content">
-      <h1>Мы создаём <span class="changing-word" id="changing-word">сервисы</span><br>— упрощая сложное.</h1>
+      <h1><span class="hero-line">Мы создаём <span class="changing-word" id="changing-word">сервисы</span></span><span class="hero-line">— упрощая сложное.</span></h1>
       <p>Ведь цифровой мир должен быть удобнее и человечнее.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#projects">Проекты</a>
@@ -217,7 +217,7 @@
                 <div class="win win-chrome win-captured">
                 <div class="chrome">
                   <div class="chrome-tabs">
-                    <span class="chrome-tab chrome-tab-active"><i></i><b></b></span>
+                    <span class="chrome-tab chrome-tab-active"><i></i><b>Chrome</b></span>
                     <span class="chrome-tab"><i></i><b></b></span>
                     <span class="chrome-plus"></span>
                   </div>
@@ -236,12 +236,12 @@
                 </div>
               </div>
             </div>
-            <div class="tandem-link"><span></span></div>
+            <div class="tandem-link"></div>
             <div class="tandem-monitor">
               <div class="tandem-screen tandem-mirror">
                 <div class="chrome">
                   <div class="chrome-tabs">
-                    <span class="chrome-tab chrome-tab-active"><i></i><b></b></span>
+                    <span class="chrome-tab chrome-tab-active"><i></i><b>Chrome</b></span>
                     <span class="chrome-tab"><i></i><b></b></span>
                     <span class="chrome-plus"></span>
                   </div>
@@ -325,7 +325,6 @@
               </defs>
               <path d="M0,80 L30,65 L60,72 L90,50 L120,55 L150,30 L180,38 L210,15 L240,20 L240,100 L0,100 Z" fill="url(#finmanFill)" />
               <path d="M0,80 L30,65 L60,72 L90,50 L120,55 L150,30 L180,38 L210,15 L240,20" fill="none" stroke="#12a866" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
-              <circle class="finman-dot" r="4" fill="#12a866" stroke="#ffffff" stroke-width="1.5" />
             </svg>
           </div>
         </div>
@@ -368,18 +367,23 @@
 
       <article class="project">
         <div class="project-preview">
-          <div class="vpn">
-            <svg class="vpn-globe" viewBox="0 0 210 210">
-              <circle class="vpn-ring" cx="105" cy="105" r="98" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" />
-              <circle cx="105" cy="105" r="68" fill="none" stroke="#111114" stroke-width="2" />
-              <ellipse cx="105" cy="105" rx="34" ry="68" fill="none" stroke="#111114" stroke-width="2" />
-              <ellipse cx="105" cy="105" rx="68" ry="24" fill="none" stroke="#111114" stroke-width="2" />
-              <circle class="vpn-node" cx="78" cy="72" r="4" />
-              <circle class="vpn-node" cx="140" cy="96" r="4" />
-              <circle class="vpn-node" cx="98" cy="146" r="4" />
-            </svg>
+          <div class="ng-panel">
+              <div class="ng-head">
+                <span>Серверы</span>
+              </div>
+              <ul class="ng-list" id="nextgateNodes">
+                <li class="ng-row" data-ping="8"><span class="ng-code">RU</span><span class="ng-name">Россия</span><span class="ng-ping"><b>8</b> ms</span></li>
+                <li class="ng-row" data-ping="14"><span class="ng-code">FI</span><span class="ng-name">Финляндия</span><span class="ng-ping"><b>14</b> ms</span></li>
+                <li class="ng-row" data-ping="31"><span class="ng-code">PL</span><span class="ng-name">Польша</span><span class="ng-ping"><b>31</b> ms</span></li>
+                <li class="ng-row" data-ping="38"><span class="ng-code">DE</span><span class="ng-name">Германия</span><span class="ng-ping"><b>38</b> ms</span></li>
+                <li class="ng-row" data-ping="42"><span class="ng-code">NL</span><span class="ng-name">Нидерланды</span><span class="ng-ping"><b>42</b> ms</span></li>
+                <li class="ng-row" data-ping="71"><span class="ng-code">ES</span><span class="ng-name">Испания</span><span class="ng-ping"><b>71</b> ms</span></li>
+                <li class="ng-row" data-ping="96"><span class="ng-code">AE</span><span class="ng-name">ОАЭ</span><span class="ng-ping"><b>96</b> ms</span></li>
+                <li class="ng-row" data-ping="128"><span class="ng-code">US</span><span class="ng-name">США</span><span class="ng-ping"><b>128</b> ms</span></li>
+                <li class="ng-row" data-ping="164"><span class="ng-code">JP</span><span class="ng-name">Япония</span><span class="ng-ping"><b>164</b> ms</span></li>
+              </ul>
+            </div>
           </div>
-        </div>
         <div class="project-body">
           <div class="project-head">
             <span class="project-logo"><img src="image/projects/nextgate.svg" alt="" /></span>

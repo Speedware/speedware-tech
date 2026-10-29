@@ -63,6 +63,25 @@ document.getElementById('year').textContent = new Date().getFullYear();
 })();
 
 (function () {
+  const rows = Array.from(document.querySelectorAll('#nextgateNodes .ng-row'));
+  if (!rows.length) return;
+
+  function update() {
+    let best = null;
+    rows.forEach((row) => {
+      const base = Number(row.dataset.ping);
+      const ping = Math.max(3, base + Math.round((Math.random() - 0.5) * base * 0.2));
+      row.querySelector('.ng-ping b').textContent = ping;
+      row.classList.remove('best');
+      if (!best || ping < best.ping) best = { row, ping };
+    });
+    best.row.classList.add('best');
+  }
+  update();
+  setInterval(update, 1800);
+})();
+
+(function () {
   const container = document.getElementById('finmanDigits');
   if (!container) return;
 
@@ -110,7 +129,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   }, 2600);
 })();
 
-const words = ["сервисы", "технологии", "продукты", "приложения", "сайты", "программы", "сообщество", "автоматизации", "инфраструктуру", "будущее", "свободу"];
+const words = ["сервисы", "технологии", "продукты", "приложения", "сайты", "программы", "сообщество", "автоматизации", "будущее", "свободу"];
 const wordEl = document.getElementById('changing-word');
 let index = 0;
 
