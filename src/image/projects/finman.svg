@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#2BCB80"/><stop offset="1" stop-color="#0E9A5E"/></linearGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C6F7DC"/><stop offset="1" stop-color="#9BEBC0"/></linearGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7DEBB3"/><stop offset="1" stop-color="#45D690"/></linearGradient>
+  </defs>
+  <g transform="translate(0,-14)">
+    <rect x="110" y="118" width="250" height="160" rx="30" fill="url(#c1)" transform="rotate(-10 235 198)"/>
+    <rect x="160" y="138" width="250" height="160" rx="30" fill="url(#c2)" transform="rotate(6 285 218)"/>
+    <rect x="76" y="210" width="360" height="236" rx="56" fill="url(#body)"/>
+    <rect x="76" y="210" width="360" height="236" rx="56" fill="#FFFFFF" opacity="0.10" clip-path="inset(0 0 70% 0)"/>
+    <path d="M436,290 L346,290 Q316,290 316,320 L316,334 Q316,364 346,364 L436,364 Z" fill="#0A7A4E"/>
+    <circle cx="356" cy="327" r="13" fill="#FFFFFF"/>
+  </g>
+</svg>

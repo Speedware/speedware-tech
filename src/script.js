@@ -1,21 +1,21 @@
 const menuBtn = document.getElementById('menuBtn');
-const glassMenu = document.getElementById('glassMenu');
+const menu = document.getElementById('menu');
 
 function closeMenu() {
   menuBtn.classList.remove('active');
-  glassMenu.classList.remove('open');
+  menu.classList.remove('open');
   menuBtn.setAttribute('aria-expanded', 'false');
 }
 
 menuBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  const isOpen = glassMenu.classList.toggle('open');
+  const isOpen = menu.classList.toggle('open');
   menuBtn.classList.toggle('active', isOpen);
   menuBtn.setAttribute('aria-expanded', String(isOpen));
 });
 
 document.addEventListener('click', (e) => {
-  if (!glassMenu.contains(e.target) && e.target !== menuBtn) {
+  if (!menu.contains(e.target) || e.target.closest('.menu-item')) {
     closeMenu();
   }
 });
@@ -31,7 +31,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
   const timerEl = document.getElementById('anyscreenTimer');
   if (!boxes.length || !timerEl) return;
 
-  let sweepTimer = null;
   const ON_MS = 500;
   const GAP_MS = 220;
   const ALL_ON_MS = 700;
@@ -40,15 +39,15 @@ document.getElementById('year').textContent = new Date().getFullYear();
   function step(index) {
     if (index < boxes.length) {
       boxes[index].classList.add('lit');
-      sweepTimer = setTimeout(() => {
+      setTimeout(() => {
         boxes[index].classList.remove('lit');
-        sweepTimer = setTimeout(() => step(index + 1), GAP_MS);
+        setTimeout(() => step(index + 1), GAP_MS);
       }, ON_MS);
     } else {
       boxes.forEach((box) => box.classList.add('lit'));
-      sweepTimer = setTimeout(() => {
+      setTimeout(() => {
         boxes.forEach((box) => box.classList.remove('lit'));
-        sweepTimer = setTimeout(() => step(0), ALL_GAP_MS);
+        setTimeout(() => step(0), ALL_GAP_MS);
       }, ALL_ON_MS);
     }
   }
@@ -64,24 +63,17 @@ document.getElementById('year').textContent = new Date().getFullYear();
 })();
 
 (function () {
-  const platforms = ['Windows', 'macOS', 'Linux', 'Android', 'iOS', 'Apple TV', 'Android TV'];
-  const chips = document.querySelectorAll('#nextgatePlatforms .ng-chip');
-  const nameEl = document.getElementById('nextgatePlatformName');
-  const titleEl = nameEl ? nameEl.closest('.ng-hero-title') : null;
-  if (!chips.length || !nameEl || !titleEl) return;
+  const timerEl = document.getElementById('mobilityTimer');
+  if (!timerEl) return;
 
-  let index = 0;
-  function update() {
-    chips.forEach((chip, i) => chip.classList.toggle('active', i === index));
-    titleEl.classList.add('fading');
-    setTimeout(() => {
-      nameEl.textContent = platforms[index];
-      titleEl.classList.remove('fading');
-      index = (index + 1) % platforms.length;
-    }, 300);
-  }
-  update();
-  setInterval(update, 2000);
+  let seconds = 2 * 3600 + 14 * 60 + 36;
+  setInterval(() => {
+    seconds++;
+    const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+    const m = String(Math.floor(seconds / 60) % 60).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    timerEl.textContent = `${h}:${m}:${s}`;
+  }, 1000);
 })();
 
 (function () {
@@ -132,13 +124,13 @@ document.getElementById('year').textContent = new Date().getFullYear();
   }, 2600);
 })();
 
-const words = ["сервисы", "технологии", "продукты", "приложения", "сайты", "документацию", "программы", "сообщество", "speedware", "статьи", "автоматизации", "будущее", "свободу"];
+const words = ["сервисы", "технологии", "продукты", "приложения", "сайты", "программы", "сообщество", "автоматизации", "инфраструктуру", "будущее", "свободу"];
 const wordEl = document.getElementById('changing-word');
 let index = 0;
 
 function updateWord() {
   wordEl.style.opacity = '0';
-  wordEl.style.transform = 'translateY(15px)';
+  wordEl.style.transform = 'translateY(12px)';
 
   setTimeout(() => {
     index = (index + 1) % words.length;
@@ -147,58 +139,12 @@ function updateWord() {
       wordEl.style.opacity = '1';
       wordEl.style.transform = 'translateY(0)';
     }, 10);
-
-  }, 200);
+  }, 300);
 }
 setInterval(updateWord, 4000);
 
 document.addEventListener('DOMContentLoaded', function() {
   const marqueeContent = document.querySelector('.marquee-content');
   const track = document.querySelector('.marquee-track');
-
-  const clone = marqueeContent.cloneNode(true);
-  track.appendChild(clone);
-
-  const contentWidth = marqueeContent.scrollWidth;
-  track.style.width = (contentWidth * 2) + 'px';
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const video = document.querySelector('.video-bg');
-  const hero = document.querySelector('.hero');
-
-  if (video && hero) {
-    let videoLoaded = false;
-    let minTimePassed = false;
-
-    video.preload = 'auto';
-
-    setTimeout(function() {
-      minTimePassed = true;
-      if (videoLoaded) {
-        showVideo();
-      }
-    }, 10000);
-
-    video.addEventListener('canplaythrough', function() {
-      videoLoaded = true;
-      if (minTimePassed) {
-        showVideo();
-      }
-    });
-
-    function showVideo() {
-      hero.classList.add('video-loaded');
-      video.play().catch(function(error) {
-        console.log('Автоплей заблокирован, видео начнется после взаимодействия');
-      });
-    }
-
-    if (video.readyState >= 4) {
-      videoLoaded = true;
-      if (minTimePassed) {
-        showVideo();
-      }
-    }
-  }
+  track.appendChild(marqueeContent.cloneNode(true));
 });
